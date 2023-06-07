@@ -199,4 +199,12 @@ public interface Producer<T> extends Closeable {
      * @return the number of partitions per topic.
      */
     int getNumOfPartitions();
+
+    /**
+     * Return internal state of the producer. Useful if you want to check that current producer is valid.
+     * @return true is the producer has been closed
+     * @see #close()
+     * @see #closeAsync()
+     */
+    boolean isClosed();
 }

@@ -812,6 +812,12 @@ public abstract class ConsumerBase<T> extends HandlerState implements Consumer<T
         return this.consumerName;
     }
 
+    @Override
+    public boolean isClosed() {
+        State currentState = getState();
+        return currentState == State.Closing || currentState == State.Closed;
+    }
+
     /**
      * Redelivers the given unacknowledged messages. In Failover mode, the request is ignored if the consumer is not
      * active for the given topic. In Shared mode, the consumers messages to be redelivered are distributed across all

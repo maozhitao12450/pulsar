@@ -612,4 +612,13 @@ public interface Consumer<T> extends Closeable, MessageAcknowledger {
      * @return The last disconnected timestamp of the consumer
      */
     long getLastDisconnectedTimestamp();
+
+    /**
+     * Return internal state of the consumer. Useful if you want to check that current consumer is valid.
+     * @return true is the consumer has been closed
+     * @see #close()
+     * @see #closeAsync()
+     */
+    boolean isClosed();
+
 }
